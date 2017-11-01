@@ -1,0 +1,8 @@
+{
+  "searchWords": "Prince, Oreo, BN",
+  "filters": {
+    "category": "Sucrerie",
+    "subcategory": "Gateaux"
+  },
+  "provider": "csv"
+}
