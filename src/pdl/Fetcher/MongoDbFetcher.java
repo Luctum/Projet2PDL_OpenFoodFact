@@ -6,8 +6,12 @@ public class MongoDbFetcher implements IFetcher {
 
     Config config;
 
+    public MongoDbFetcher(Config config){
+        this.config = config;
+    }
+
     @Override
-    public String getProducts(Config config) {
+    public String getProducts() {
         return "";
     }
 
