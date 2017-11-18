@@ -1,10 +1,14 @@
 package pdl.Fetcher;
 
-public class  MongoDbFetcher implements IFetcher {
+import pdl.Model.Config;
+
+public class MongoDbFetcher implements IFetcher {
+
+    Config config;
 
     @Override
-    public void getProducts(String keywords, String filter) {
-
+    public String getProducts(Config config) {
+        return "";
     }
 
     @Override

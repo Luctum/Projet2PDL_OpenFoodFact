@@ -1,7 +1,9 @@
 package pdl.Fetcher;
 
+import pdl.Model.Config;
+
 public interface IFetcher {
 
-    public void getProducts(String keywords, String filter);
+    public String getProducts(Config config);
     public void prettify();
 }
