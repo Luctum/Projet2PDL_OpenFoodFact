@@ -7,6 +7,7 @@ import pdl.Utils.ConfigReader;
 public class AppController {
 
     public static void run(){
+    public static void run() throws Exception {
         //Calls the right methods in the right order and pass good parameter to each methods
         //Notify users if there is errors
         //test config

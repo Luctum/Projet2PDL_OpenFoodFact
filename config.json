@@ -9,5 +9,7 @@
   "filters": {
   },
   "provider": "mongo",
-  "mongoPort": 27017
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "pdl"
 }
