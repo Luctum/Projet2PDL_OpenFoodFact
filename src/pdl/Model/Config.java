@@ -24,7 +24,7 @@ public class Config {
         this.provider = "";
         // Default mongo port
         this.mongoPort = 27017;
-        this.csvPath = "./";
+        this.csvPath = "products.csv";
         this.collectionName = "products";
         this.dbName = "";
     }
