@@ -20,7 +20,7 @@ searchWords : Array of keywords to search. (eg: ['coca cola', "fanta"])
 
 ### Provider configuration
 
-provider : With which dump do you want to use in order to retreive the data. (eg: csv or mongo)
+provider : Which dump do you want to use in order to retreive the data. (eg: csv or mongo)
 
 #### In the case of _mongo_ : 
 
