@@ -15,7 +15,7 @@ public class MongoDbFetcher implements IFetcher {
     private DBCollection dbCollection;
     private Config config;
 
-    public MongoDbFetcher( Config config)
+    public MongoDbFetcher( Config config, String dbName)
     {
        this.config = config;
         try {
@@ -24,7 +24,7 @@ public class MongoDbFetcher implements IFetcher {
             e.printStackTrace();
         }
 
-        DB database = this.mongoClient.getDB("dumpOFF");
+        DB database = this.mongoClient.getDB(dbName);
         dbCollection = database.getCollection("products");
     }
 

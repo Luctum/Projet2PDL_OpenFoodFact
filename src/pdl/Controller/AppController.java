@@ -12,7 +12,7 @@ public class AppController {
         //test config
         Config c = ConfigReader.readConfig();
         System.out.println(c.toString());
-        MongoDbFetcher iFetcher = new MongoDbFetcher(c);
+        MongoDbFetcher iFetcher = new MongoDbFetcher(c,"dumpOFF");
         System.out.println(iFetcher.getProducts());
     }
 }

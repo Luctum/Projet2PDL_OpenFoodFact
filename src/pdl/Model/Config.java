@@ -32,7 +32,7 @@ public class Config {
     }
 
     public Map<String, String> getFilters() {
-        return filters;
+        return this.filters;
     }
 
     public void setFilters(Map<String, String> filters) {
@@ -56,7 +56,7 @@ public class Config {
     }
 
     public int getMongoPort() {
-        return mongoPort;
+        return this.mongoPort;
     }
 
     public void setMongoPort(int mongoPort) {
