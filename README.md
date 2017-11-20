@@ -31,7 +31,7 @@ dbName : Name of your database.
 
 #### In the case of _csv_ :
 
-csvPath : The complete path where you store your csv dump. (optionnal : default is the root of this program)
+csvPath : The complete path where you store your csv dump. (optionnal : default is the root of this program products.csv)
 
 #### Complete example : 
 ```
