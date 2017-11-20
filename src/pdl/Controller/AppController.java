@@ -1,5 +1,6 @@
 package pdl.Controller;
 
+import pdl.Fetcher.MongoDbFetcher;
 import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
 
@@ -11,5 +12,7 @@ public class AppController {
         //test config
         Config c = ConfigReader.readConfig();
         System.out.println(c.toString());
+        MongoDbFetcher iFetcher = new MongoDbFetcher(c);
+        System.out.println(iFetcher.getProducts());
     }
 }

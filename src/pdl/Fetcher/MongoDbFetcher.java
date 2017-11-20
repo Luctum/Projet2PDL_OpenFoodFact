@@ -6,8 +6,7 @@ import com.mongodb.*;
 
 
 import java.net.UnknownHostException;
-import java.util.List;
-import java.util.Map;
+
 
 
 public class MongoDbFetcher implements IFetcher {
@@ -29,25 +28,16 @@ public class MongoDbFetcher implements IFetcher {
         dbCollection = database.getCollection("products");
     }
 
-    public void testAccesDB()
-    {
-        DBObject query =  new BasicDBObject();
-
-        query.put("_id", "20003470");
-
-        DBCursor DBcursor = dbCollection.find (query);
-        Object jsonObject = DBcursor.one();
-        System.out.println("resul "+jsonObject.toString());
-    }
-
-
     @Override
     public String getProducts() {
-
-        List<String> searchWords = config.getSearchWords();
-        Map<String, String> filters = config.getFilters();
-
-        return null;
+        String res="";
+        DBObject query =  new BasicDBObject();
+        query.put(this.config.getFieldToSearch(), new BasicDBObject("$in", this.config.getSearchWords()));
+        DBCursor DBcursor = dbCollection.find (query);
+        while(DBcursor.hasNext()) {
+           res += DBcursor.next()+"\n";
+        }
+        return res;
     }
 
     @Override
