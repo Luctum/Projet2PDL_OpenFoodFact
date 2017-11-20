@@ -5,6 +5,7 @@ A pom.xml file is defined in order to download all the dependencies with maven e
 Current dependencies:
 - OpenCSV
 - Gson
+- mongo-java-driver
 
 ## Configuration
 
@@ -26,6 +27,7 @@ provider : Which dump do you want to use in order to retreive the data. (eg: csv
 
 mongoPort : The port you are using to run mongoDb. (optionnal: 27017 by default)
 collectionName : Name of your mongoDb collection (optionnal: "products" by default)
+dbName : Name of your database.
 
 #### In the case of _csv_ :
 
