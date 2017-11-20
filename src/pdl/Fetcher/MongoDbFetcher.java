@@ -30,14 +30,14 @@ public class MongoDbFetcher implements IFetcher {
 
     @Override
     public String getProducts() {
-        String res="";
+        StringBuilder res= new StringBuilder();
         DBObject query =  new BasicDBObject();
         query.put(this.config.getFieldToSearch(), new BasicDBObject("$in", this.config.getSearchWords()));
         DBCursor DBcursor = dbCollection.find (query);
         while(DBcursor.hasNext()) {
-           res += DBcursor.next()+"\n";
+           res.append(DBcursor.next()).append("\n");
         }
-        return res;
+        return res.toString();
     }
 
     @Override
