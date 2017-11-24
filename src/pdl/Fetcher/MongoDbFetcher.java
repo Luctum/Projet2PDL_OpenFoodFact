@@ -3,8 +3,6 @@ package pdl.Fetcher;
 import pdl.Model.Config;
 import com.google.gson.JsonObject;
 import com.mongodb.*;
-
-
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;

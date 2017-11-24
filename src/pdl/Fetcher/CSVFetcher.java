@@ -2,6 +2,8 @@ package pdl.Fetcher;
 
 import pdl.Model.Config;
 
+import java.util.List;
+
 public class CSVFetcher implements IFetcher {
     private Config config;
     private String pathToCsv;
@@ -19,7 +21,7 @@ public class CSVFetcher implements IFetcher {
     *
     */
     @Override
-    public String getProducts() {
+    public List<String> getProducts() {
         return null;
     }
 
