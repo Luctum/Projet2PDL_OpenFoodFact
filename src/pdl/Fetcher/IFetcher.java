@@ -1,7 +1,10 @@
 package pdl.Fetcher;
 
-public interface IFetcher {
+import pdl.Model.Config;
 
-    public void getProducts(String keywords, String filter);
+import java.util.List;
+
+public interface IFetcher {
+    public List<String> getProducts();
     public void prettify();
 }

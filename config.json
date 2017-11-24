@@ -1,8 +1,15 @@
 {
-  "searchWords": "Prince, Oreo, BN",
+  "fieldToSearch" : "product_name",
+  "searchWords": [
+    "Choco Bites",
+    "Chocapic",
+    "nutella",
+    "La vache qui rit"
+  ],
   "filters": {
-    "category": "Sucrerie",
-    "subcategory": "Gateaux"
   },
-  "provider": "csv"
+  "provider": "mongo",
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "dumpOFF"
 }
