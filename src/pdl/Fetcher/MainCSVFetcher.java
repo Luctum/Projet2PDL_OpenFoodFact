@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class MainCSVFetcher {
     public static void main(String [] args) throws IOException {
         long startTime = System.nanoTime();
-        String path = "/Users/Abraham/Downloads/fr.openfoodfacts.org.products.csv";
+        String path = "C:/Users/Marlène/Downloads/en_openfoodfacts_org_products.csv.csv";
 
         /* Read Test One Slow ~27 minutes  */
         /*try {
@@ -52,11 +52,11 @@ public class MainCSVFetcher {
         });
         */
 
-        /* Read Test Java Stream ~41 seconds */
-        /*Path file = Paths.get("/Users/Abraham/Downloads/fr.openfoodfacts.org.products.csv");
+        /*Read Test Java Stream 41 secondes*/
+        Path file = Paths.get("C:/Users/Marlène/Downloads/en_openfoodfacts_org_products.csv.csv");
 
         try{
-            //Java 8: Stream class
+            /*Java 8: Stream class*/
             Stream<String> lines = Files.lines(file, StandardCharsets.UTF_8 );
 
             for( String line : (Iterable<String>) lines::iterator )
@@ -67,7 +67,7 @@ public class MainCSVFetcher {
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
-        */
+
 
         long endTime = System.nanoTime();
         long elapsedTimeInMillis = TimeUnit.MILLISECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS);
