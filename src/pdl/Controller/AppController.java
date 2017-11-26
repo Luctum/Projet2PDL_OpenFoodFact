@@ -22,6 +22,8 @@ public class AppController {
         fetcher.prettify();
         CsvWriter writer = new CsvWriter(c,fetcher.getListProduct());
         writer.createCsv();
+        System.out.println("Execution done");
+
 
     }
 }
