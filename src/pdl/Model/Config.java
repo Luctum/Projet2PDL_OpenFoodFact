@@ -25,14 +25,6 @@ public class Config {
         this.dbName = "";
     }
 
-    public String getProvider() {
-        return provider;
-    }
-
-    public void setProvider(String provider) {
-        this.provider = provider;
-    }
-
     public Map<String, String> getFilters() {
         return this.filters;
     }
@@ -65,14 +57,6 @@ public class Config {
         this.mongoPort = mongoPort;
     }
 
-    public String getCsvPath() {
-        return csvPath;
-    }
-
-    public void setCsvPath(String csvPath) {
-        this.csvPath = csvPath;
-    }
-
     public String getCollectionName() {
         return collectionName;
     }
@@ -95,8 +79,6 @@ public class Config {
         s.append("searchWords : ");
         this.searchWords.forEach((key) -> s.append(key).append(","));
         s.append(System.getProperty("line.separator"));
-        s.append("Provider : ").append(this.provider);
-        s.append(System.getProperty("line.separator"));
         s.append("Filters : ");
         s.append(System.getProperty("line.separator"));
         this.filters.forEach((key, value) -> {
@@ -109,7 +91,6 @@ public class Config {
         s.append(System.getProperty("line.separator"));
         s.append("Db Name : ").append(this.dbName);
         s.append(System.getProperty("line.separator"));
-        s.append("Path to csv : ").append(this.csvPath);
         return s.toString();
     }
 
