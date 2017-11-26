@@ -11,8 +11,6 @@ public class Config {
     private String fieldToSearch;
     private List<String> searchWords;
     private Map<String, String> filters;
-    private String provider;
-    private String csvPath;
     private String collectionName;
     private String dbName;
 
@@ -21,10 +19,8 @@ public class Config {
         this.fieldToSearch = "";
         this.searchWords = new ArrayList<String>();
         this.filters = new HashMap<>();
-        this.provider = "";
         // Default mongo port
         this.mongoPort = 27017;
-        this.csvPath = "products.csv";
         this.collectionName = "products";
         this.dbName = "";
     }
