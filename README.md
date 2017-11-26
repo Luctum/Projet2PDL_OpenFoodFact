@@ -6,6 +6,7 @@ Current dependencies:
 - OpenCSV
 - Gson
 - mongo-java-driver
+- org.json
 
 ## Configuration
 
@@ -15,23 +16,13 @@ Edit the config.json file at the root of the project.
 
 filedToSearch : The name of the field where to search in the openfoodfact database. (eg: "code".)
 
-searchWords : Array of keywords to search. (eg: ['coca cola', "fanta"])
-
-(filters : WIP)
-
-### Provider configuration
-
-provider : Which dump do you want to use in order to retreive the data. (eg: csv or mongo)
+searchWords : Array of keywords to search. (eg: ["coca cola", "fanta"])
 
 #### In the case of _mongo_ : 
 
 mongoPort : The port you are using to run mongoDb. (optionnal: 27017 by default)
 collectionName : Name of your mongoDb collection (optionnal: "products" by default)
 dbName : Name of your database.
-
-#### In the case of _csv_ :
-
-csvPath : The complete path where you store your csv dump. (optionnal : default is the root of this program products.csv)
 
 #### Complete example : 
 ```
@@ -43,16 +34,15 @@ csvPath : The complete path where you store your csv dump. (optionnal : default 
     "nutella",
     "La vache qui rit"
   ],
-  "filters": {
-  },
-  "provider": "mongo",
-  "mongoPort": 27017
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "pdl"
 }
 ```
 
 ## Running this tool
 
-Run the jar, or the main class.
+Run the main class.
 You will be warned if any errors occur.
-The generated CSV file will be located at the root of this program.
+The generated CSV file will be located at the root of this program with the name "result.csv".
 

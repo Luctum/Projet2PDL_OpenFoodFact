@@ -1,5 +1,7 @@
 package pdl.Controller;
 
+import com.mongodb.Mongo;
+import pdl.Fetcher.IFetcher;
 import pdl.Fetcher.MongoDbFetcher;
 import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
@@ -14,9 +16,12 @@ public class AppController {
         Config c = ConfigReader.readConfig();
         System.out.println("----- CONFIG ----");
         System.out.println(c.toString());
-        MongoDbFetcher iFetcher = new MongoDbFetcher(c);
+        MongoDbFetcher fetcher = new MongoDbFetcher(c);
         System.out.println("----- PROCESSING -----");
-        CsvWriter = new CsvWriter(c)
+        fetcher.getProducts();
+        fetcher.prettify();
+        CsvWriter writer = new CsvWriter(c,fetcher.getListProduct());
+        writer.createCsv();
 
     }
 }
