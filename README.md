@@ -14,7 +14,7 @@ Edit the config.json file at the root of the project.
 
 ### General configuration
 
-filedToSearch : The name of the field where to search in the openfoodfact database. (eg: "code".)
+fieldToSearch : The name of the field where to search in the openfoodfact database. (eg: "code" or "product_name".)
 
 searchWords : Array of keywords to search. (eg: ["coca cola", "fanta"])
 
