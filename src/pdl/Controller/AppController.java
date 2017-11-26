@@ -3,6 +3,7 @@ package pdl.Controller;
 import pdl.Fetcher.MongoDbFetcher;
 import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
+import pdl.Utils.CsvWriter;
 
 public class AppController {
 
@@ -11,9 +12,11 @@ public class AppController {
         //Notify users if there is errors
         //test config
         Config c = ConfigReader.readConfig();
+        System.out.println("----- CONFIG ----");
         System.out.println(c.toString());
-        MongoDbFetcher iFetcher = new MongoDbFetcher(c,"dumpOFF");
-        System.out.println(iFetcher.getProducts());
+        MongoDbFetcher iFetcher = new MongoDbFetcher(c);
+        System.out.println("----- PROCESSING -----");
+        CsvWriter = new CsvWriter(c)
 
     }
 }
