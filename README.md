@@ -21,7 +21,9 @@ searchWords : Array of keywords to search. (eg: ["coca cola", "fanta"])
 #### In the case of _mongo_ : 
 
 mongoPort : The port you are using to run mongoDb. (optionnal: 27017 by default)
+
 collectionName : Name of your mongoDb collection (optionnal: "products" by default)
+
 dbName : Name of your database.
 
 #### Complete example : 
