@@ -40,6 +40,7 @@ public class ApiFetcher implements IFetcher {
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
         this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/vO/product/";
     }
+
     /**
      * Container of the JSON data we received from the API
      * @return {@link List} object containing {@link String} objects
@@ -105,11 +106,4 @@ public class ApiFetcher implements IFetcher {
         return this.searchUrlByCategory;
     }
 
-    /**
-     *
-     * @return {@link OkHttpClient} client
-     */
-    public OkHttpClient getClient() {
-        return client;
-    }
 }
