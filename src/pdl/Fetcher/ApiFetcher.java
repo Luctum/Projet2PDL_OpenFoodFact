@@ -36,8 +36,8 @@ public class ApiFetcher implements IFetcher {
     public ApiFetcher(){
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
-        this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/api/vO/product/";
-        this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/code/";
+        this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
+        this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/vO/product/";
     }
     /**
      * Container of the JSON data we received from the API
