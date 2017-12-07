@@ -59,13 +59,4 @@ public class ApiFetcherTest {
         assertEquals(url, this.apiFetcher.getSearchUrlByCategory());
     }
 
-    /**
-     *
-     * @throws Exception
-     */
-    @Test
-    public void getClientTest1() throws Exception {
-        assertTrue(this.apiFetcher.getClient() != null);
-    }
-
 }
