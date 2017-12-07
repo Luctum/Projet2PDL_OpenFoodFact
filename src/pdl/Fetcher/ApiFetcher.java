@@ -1,5 +1,7 @@
 package pdl.Fetcher;
 
+import okhttp3.OkHttpClient;
+
 import java.util.List;
 
 /**
@@ -8,6 +10,12 @@ import java.util.List;
  * @author : Marlène Akimana
  */
 public class ApiFetcher implements IFetcher {
+
+    /**
+     * {@link OkHttpClient} client to send requests to the API
+     */
+    private OkHttpClient client;
+
     /**
      * base URL to make calls on the API for product information by its name
      */
@@ -26,6 +34,7 @@ public class ApiFetcher implements IFetcher {
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
     public ApiFetcher(){
+        this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/api/vO/product/";
         this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/code/";
