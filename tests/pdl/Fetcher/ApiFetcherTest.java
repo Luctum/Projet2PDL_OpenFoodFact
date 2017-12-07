@@ -5,45 +5,68 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * {@link ApiFetcherTest} Test class
+ */
 public class ApiFetcherTest {
+    /**
+     * {@link ApiFetcher} object
+     */
+    private ApiFetcher apiFetcher;
     @Before
     public void setUp() throws Exception {
+        this.apiFetcher = new ApiFetcher();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
-    public void getProducts() throws Exception {
+    public void getProductsTest1() throws Exception {
+        assertEquals(null, this.apiFetcher.getProducts());
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
-    public void prettify() throws Exception {
+    public void getSearchUrlByProductNameTest1() throws Exception {
+        this.apiFetcher.setSearch("737628064502");
+        String url = "https://ssl-api.openfoodfacts.org/api/v0/product/737628064502.json";
+        assertEquals(url, this.apiFetcher.getSearchUrlByProductName());
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
-    public void setSearch() throws Exception {
+    public void getSearchUrlByProductByCodeTest1() throws Exception {
+        this.apiFetcher.setSearch("737628064502");
+        String url = "https://ssl-api.openfoodfacts.org/api/v0/product/737628064502.json";
+        assertEquals(url, this.apiFetcher.getSearchUrlByProductName());
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
-    public void setSearchByCode() throws Exception {
+    public void getSearchUrlByCategoryTest1() throws Exception {
+        this.apiFetcher.setSearch("737628064502");
+        String url = "https://ssl-api.openfoodfacts.org/api/v0/product/737628064502.json";
+        assertEquals(url, this.apiFetcher.getSearchUrlByProductName());
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
-    public void setSearchByCategory() throws Exception {
-    }
-
-    @Test
-    public void getSearchUrlByProductName() throws Exception {
-    }
-
-    @Test
-    public void getSearchUrlByProductByCode() throws Exception {
-    }
-
-    @Test
-    public void getSearchUrlByCategory() throws Exception {
-    }
-
-    @Test
-    public void getClient() throws Exception {
+    public void getClientTest1() throws Exception {
+        assertTrue(this.apiFetcher.getClient() != null);
     }
 
 }
