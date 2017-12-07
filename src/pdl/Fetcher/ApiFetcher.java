@@ -102,4 +102,12 @@ public class ApiFetcher implements IFetcher {
     public String getSearchUrlByCategory() {
         return this.searchUrlByCategory;
     }
+
+    /**
+     *
+     * @return {@link OkHttpClient} client
+     */
+    public OkHttpClient getClient() {
+        return client;
+    }
 }
