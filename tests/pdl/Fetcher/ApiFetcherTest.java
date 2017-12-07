@@ -43,7 +43,7 @@ public class ApiFetcherTest {
      */
     @Test
     public void getSearchUrlByProductByCodeTest1() throws Exception {
-        this.apiFetcher.setSearch("3596710xxxxxx");
+        this.apiFetcher.setSearchByCode("3596710xxxxxx");
         String url = "https://ssl-api.openfoodfacts.org/code/3596710xxxxxx.json";
         assertEquals(url, this.apiFetcher.getSearchUrlByProductByCode());
     }
@@ -54,7 +54,7 @@ public class ApiFetcherTest {
      */
     @Test
     public void getSearchUrlByCategoryTest1() throws Exception {
-        this.apiFetcher.setSearch("pizzas/1");
+        this.apiFetcher.setSearchByCategory("pizzas/1");
         String url = "https://ssl-api.openfoodfacts.org/category/pizzas/1.json";
         assertEquals(url, this.apiFetcher.getSearchUrlByCategory());
     }
