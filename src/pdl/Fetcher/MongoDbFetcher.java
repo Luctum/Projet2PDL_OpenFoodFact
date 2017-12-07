@@ -3,10 +3,9 @@ package pdl.Fetcher;
 import pdl.Model.Config;
 import com.google.gson.JsonObject;
 import com.mongodb.*;
-
-
 import java.net.UnknownHostException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MongoDbFetcher implements IFetcher {
@@ -29,15 +28,16 @@ public class MongoDbFetcher implements IFetcher {
     }
 
     @Override
-    public String getProducts() {
-        StringBuilder res= new StringBuilder();
+    public List<String> getProducts() {
+
+        List<String>products = new ArrayList<>();
         DBObject query =  new BasicDBObject();
         query.put(this.config.getFieldToSearch(), new BasicDBObject("$in", this.config.getSearchWords()));
         DBCursor DBcursor = dbCollection.find (query);
         while(DBcursor.hasNext()) {
-           res.append(DBcursor.next()).append("\n");
+            products.add(DBcursor.next()+"");
         }
-        return res.toString();
+        return products;
     }
 
     @Override

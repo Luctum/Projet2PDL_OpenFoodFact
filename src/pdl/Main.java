@@ -1,8 +1,6 @@
 package pdl;
 
 import pdl.Controller.AppController;
-import java.io.IOException;
-
 
 public class Main {
 
