@@ -34,7 +34,7 @@ public class ApiFetcherTest {
     @Test
     public void getSearchUrlByProductNameTest1() throws Exception {
         this.apiFetcher.setSearch("737628064502");
-        String url = "https://ssl-api.openfoodfacts.org/api/v0/product/737628064502.json";
+        String url = "https://ssl-api.openfoodfacts.org/api/vO/product/737628064502.json";
         assertEquals(url, this.apiFetcher.getSearchUrlByProductName());
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class ApiFetcher implements IFetcher {
 
+    private final String jsonExtension = ".json";
     /**
      * {@link OkHttpClient} client to send requests to the API
      */
@@ -61,6 +62,7 @@ public class ApiFetcher implements IFetcher {
      * @param keyword product name
      */
     public void setSearch(String keyword){
+        this.searchUrlByProductName = this.getSearchUrlByProductName() + keyword + this.jsonExtension;
     }
 
     /**
@@ -68,7 +70,7 @@ public class ApiFetcher implements IFetcher {
      * @param code
      */
     public void setSearchByCode(String code){
-
+        this.searchUrlByProductByCode = this.getSearchUrlByProductByCode() + code + this.jsonExtension;
     }
 
     /**
@@ -76,7 +78,7 @@ public class ApiFetcher implements IFetcher {
      * @param category
      */
     public void setSearchByCategory(String category){
-
+        this.searchUrlByCategory = this.getSearchUrlByCategory() + category + this.jsonExtension;
     }
 
     /**
