@@ -9,6 +9,7 @@ import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,17 +42,23 @@ public class ApiFetcher implements IFetcher {
      * base URL to make calls on the API for category information
      */
     private String searchUrlByCategory;
+    /**
+     *
+     */
+    private List<String> products;
+
 
     /**
      * Preferred Constructor
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
     public ApiFetcher() throws Exception {
-        file = ConfigReader.readConfig();
+        this.file = ConfigReader.readConfig();
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
         this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/vO/product/";
+        this.products= new ArrayList<>();
     }
 
     /**
