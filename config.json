@@ -1,12 +1,15 @@
 {
-  "fieldToSearch" : "code",
+  "fieldToSearch" : "product_name",
   "searchWords": [
-    "3017624047813"
+    "Choco Bites",
+    "Chocapic",
+    "nutella",
+    "La vache qui rit"
   ],
   "filters": {
   },
   "provider": "mongo",
   "mongoPort": 27017,
   "collectionName": "products",
-  "dbName": "dumpOFF"
+  "dbName": "openfoodfact"
 }
