@@ -8,6 +8,7 @@ import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -65,6 +66,7 @@ public class ApiFetcher implements IFetcher {
         return response.body();
     }
 
+
     /**
      * Container of the JSON data we received from the API
      * @return {@link List} object containing {@link String} objects
@@ -104,7 +106,7 @@ public class ApiFetcher implements IFetcher {
      * Creates a url to send to the API to search for product information by its name
      * @param keyword product name
      */
-    public void setSearch(String keyword){
+    public void setSearchUrlByProductName(String keyword){
         this.searchUrlByProductName = this.getSearchUrlByProductName() + keyword + this.jsonExtension;
     }
 

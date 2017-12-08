@@ -16,8 +16,6 @@ public interface PairInterface {
 
     boolean equals(Object o);
 
-
-
     /**
 
      * Compute a hash code using the hash codes of the underlying objects
