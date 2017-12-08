@@ -106,7 +106,7 @@ public class ApiFetcher implements IFetcher {
      * Creates a url to send to the API to search for product information by its name
      * @param keyword product name
      */
-    public void setSearchUrlByProductName(String keyword){
+    public void setSearchByProductName(String keyword){
         this.searchUrlByProductName = this.getSearchUrlByProductName() + keyword + this.jsonExtension;
     }
 
