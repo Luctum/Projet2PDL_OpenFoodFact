@@ -28,7 +28,6 @@ public class ApiFetcher implements IFetcher {
      * {@link OkHttpClient} client to send requests to the API
      */
     private OkHttpClient client;
-
     /**
      * base URL to make calls on the API for product information by its name
      */
@@ -81,6 +80,24 @@ public class ApiFetcher implements IFetcher {
     @Override
     public void prettify() {
 
+    }
+
+    /**
+     * Analyzes status value rendered by the API
+     * @param responseBody Object rendered by the API
+     * @return status of an object
+     */
+    public String getStatus(ResponseBody responseBody){
+        return "";
+    }
+
+    /**
+     * Analyzes a the number of pages for a product
+     * @param responseBody Object rendered by the API
+     * @return number of pages of a product
+     */
+    public int pages(ResponseBody responseBody){
+        return 0;
     }
 
     /**
