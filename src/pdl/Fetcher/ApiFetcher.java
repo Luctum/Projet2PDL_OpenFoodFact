@@ -1,5 +1,6 @@
 package pdl.Fetcher;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -99,6 +100,22 @@ public class ApiFetcher implements IFetcher {
             });
         }
         return this.products;
+    }
+
+    /**
+     * JSON pretty printer
+     * @throws Exception
+     */
+    public void formatJsonString() throws Exception {
+        String json = new ApiFetcher().getProducts().get(0);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            Object jsonObject = mapper.readValue(json, Object.class);
+            String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
+            System.out.println(prettyJson);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
