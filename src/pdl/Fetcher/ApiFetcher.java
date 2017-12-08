@@ -8,6 +8,7 @@ import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +80,23 @@ public class ApiFetcher implements IFetcher {
      * @return {@link List} object containing {@link String} objects
      */
     @Override
-    public List<String> getProducts() {
-        return null;
+    public List<String> getProducts() throws NoSuchMethodException {
+        PairImpl<Method, Method> p = this.searchMethod(this.file.getFieldToSearch());
+        this.file.getSearchWords().forEach(keyword -> {
+            Method getMethod = p.getKey();
+            Method setMethod = p.getValue();
+            try {
+                setMethod.invoke(this,keyword);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            try {
+                products.add(this.run((String)getMethod.invoke(this)).string());
+            } catch (IOException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        });
+        return this.products;
     }
 
     /**
@@ -97,14 +113,14 @@ public class ApiFetcher implements IFetcher {
      * @return {@link PairImpl} Object which contains field to search as key and a setter method
      * @throws NoSuchMethodException
      */
-    public PairImpl<String, Method> searchMethod(String fieldToSearch) throws NoSuchMethodException {
+    public PairImpl<Method, Method> searchMethod(String fieldToSearch) throws NoSuchMethodException {
         switch (fieldToSearch) {
             case "product_name":
-                return new PairImpl<>("product_name", this.getClass().getMethod("setSearchByProductName", String.class));
+                return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductName"), this.getClass().getMethod("setSearchByProductName", String.class));
             case "code":
-                return new PairImpl<>("code", this.getClass().getMethod("setSearchByCode", String.class));
+                return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByProductByCode", String.class));
             case "category":
-                return new PairImpl<>("category", this.getClass().getMethod("setSearchByCategory", String.class));
+                return new PairImpl<>(this.getClass().getMethod("getSearchUrlByCategory"), this.getClass().getMethod("setSearchByCategory", String.class));
             default:
                 return null;
         }
