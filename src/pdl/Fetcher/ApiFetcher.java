@@ -1,7 +1,11 @@
 package pdl.Fetcher;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -39,6 +43,18 @@ public class ApiFetcher implements IFetcher {
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
         this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/vO/product/";
+    }
+
+    /**
+     * Downloads a URL content and return the object content
+     * @param url url to send to the API
+     * @return {@link ResponseBody} a json object
+     * @throws IOException
+     */
+    public ResponseBody run(String url) throws IOException {
+        Request request = new Request.Builder().url(url).build();
+        Response response = this.client.newCall(request).execute();
+        return response.body();
     }
 
     /**
