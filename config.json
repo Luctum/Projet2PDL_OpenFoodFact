@@ -1,10 +1,7 @@
 {
-  "fieldToSearch" : "product_name",
+  "fieldToSearch" : "code",
   "searchWords": [
-    "Choco Bites",
-    "Chocapic",
-    "nutella",
-    "La vache qui rit"
+    "3017624047813"
   ],
   "filters": {
   },
