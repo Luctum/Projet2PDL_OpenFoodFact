@@ -15,6 +15,9 @@ import java.util.List;
  */
 public class ApiFetcher implements IFetcher {
 
+    /**
+     * String constant that holds a json file extension
+     */
     private final String jsonExtension = ".json";
     /**
      * {@link OkHttpClient} client to send requests to the API
