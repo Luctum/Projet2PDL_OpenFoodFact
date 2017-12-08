@@ -106,16 +106,17 @@ public class ApiFetcher implements IFetcher {
      * JSON pretty printer
      * @throws Exception
      */
-    public void formatJsonString() throws Exception {
-        String json = new ApiFetcher().getProducts().get(0);
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            Object jsonObject = mapper.readValue(json, Object.class);
-            String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
-            System.out.println(prettyJson);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void formatJsonString(List<String> products) throws Exception {
+       products.forEach(product -> {
+           ObjectMapper mapper = new ObjectMapper();
+           try {
+               Object jsonObject = mapper.readValue(product, Object.class);
+               String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
+               System.out.println(prettyJson);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       });
     }
 
     /**
