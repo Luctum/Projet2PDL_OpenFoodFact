@@ -85,6 +85,25 @@ public class ApiFetcher implements IFetcher {
     }
 
     /**
+     * Helps to find which method will set the URL to send to the API after config file analysis
+     * @param fieldToSearch field to search from the config file
+     * @return {@link PairImpl} Object which contains field to search as key and a setter method
+     * @throws NoSuchMethodException
+     */
+    public PairImpl<String, Method> searchMethod(String fieldToSearch) throws NoSuchMethodException {
+        switch (fieldToSearch) {
+            case "product_name":
+                return new PairImpl<>("product_name", this.getClass().getMethod("setSearchByProductName", String.class));
+            case "code":
+                return new PairImpl<>("code", this.getClass().getMethod("setSearchByCode", String.class));
+            case "category":
+                return new PairImpl<>("category", this.getClass().getMethod("setSearchByCategory", String.class));
+            default:
+                return null;
+        }
+    }
+
+    /**
      * Analyzes status value rendered by the API
      * @param responseBody Object rendered by the API
      * @return status of an object
