@@ -59,7 +59,7 @@ public class ApiFetcher implements IFetcher {
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
-        this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/vO/product/";
+        this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/v0/product/";
         this.products= new ArrayList<>();
     }
 
@@ -138,7 +138,7 @@ public class ApiFetcher implements IFetcher {
             case "product_name":
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductName"), this.getClass().getMethod("setSearchByProductName", String.class));
             case "code":
-                return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByProductByCode", String.class));
+                return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByCode", String.class));
             case "category":
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByCategory"), this.getClass().getMethod("setSearchByCategory", String.class));
             default:
