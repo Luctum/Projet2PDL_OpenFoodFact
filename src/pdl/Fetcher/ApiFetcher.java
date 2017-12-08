@@ -82,20 +82,22 @@ public class ApiFetcher implements IFetcher {
     @Override
     public List<String> getProducts() throws NoSuchMethodException {
         PairImpl<Method, Method> p = this.searchMethod(this.file.getFieldToSearch());
-        this.file.getSearchWords().forEach(keyword -> {
-            Method getMethod = p.getKey();
-            Method setMethod = p.getValue();
-            try {
-                setMethod.invoke(this,keyword);
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            try {
-                products.add(this.run((String)getMethod.invoke(this)).string());
-            } catch (IOException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        });
+        if(p != null) {
+            this.file.getSearchWords().forEach(keyword -> {
+                Method getMethod = p.getKey();
+                Method setMethod = p.getValue();
+                try {
+                    setMethod.invoke(this, keyword);
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    products.add(this.run((String) getMethod.invoke(this)).string());
+                } catch (IOException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
         return this.products;
     }
 
