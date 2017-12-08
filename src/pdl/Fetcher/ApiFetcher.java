@@ -4,6 +4,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import pdl.Model.Config;
+import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +16,10 @@ import java.util.List;
  * @author : Marlène Akimana
  */
 public class ApiFetcher implements IFetcher {
-
+    /**
+     * configuration file from the client
+     */
+    private Config file;
     /**
      * String constant that holds a json file extension
      */
@@ -41,7 +46,8 @@ public class ApiFetcher implements IFetcher {
      * Preferred Constructor
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
-    public ApiFetcher(){
+    public ApiFetcher() throws Exception {
+        file = ConfigReader.readConfig();
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
@@ -87,7 +93,7 @@ public class ApiFetcher implements IFetcher {
 
     /**
      * Creates an URL to send to the API to search for product information by its bar code
-     * @param code
+     * @param code any product code in Open Food Facts
      */
     public void setSearchByCode(String code){
         this.searchUrlByProductByCode = this.getSearchUrlByProductByCode() + code + this.jsonExtension;
@@ -95,14 +101,13 @@ public class ApiFetcher implements IFetcher {
 
     /**
      * Creates a url to send to the API to search for categories information
-     * @param category
+     * @param category any category in Open Food Facts
      */
     public void setSearchByCategory(String category){
         this.searchUrlByCategory = this.getSearchUrlByCategory() + category + this.jsonExtension;
     }
 
     /**
-     *
      * @return search url by product name
      */
     public String getSearchUrlByProductName() {
@@ -110,7 +115,6 @@ public class ApiFetcher implements IFetcher {
     }
 
     /**
-     *
      * @return search url by product code
      */
     public String getSearchUrlByProductByCode() {
@@ -118,7 +122,6 @@ public class ApiFetcher implements IFetcher {
     }
 
     /**
-     *
      * @return search url by category
      */
     public String getSearchUrlByCategory() {
