@@ -14,7 +14,7 @@ public class AppController {
         Config c = ConfigReader.readConfig();
         System.out.println("----- CONFIG ----");
         System.out.println(c.toString());
-        MongoDbFetcher iFetcher = new MongoDbFetcher(c,c.getDbName());
+        MongoDbFetcher iFetcher = new MongoDbFetcher(c);
         System.out.println("----- PROCESSING -----");
         iFetcher.prettify();
         CsvWriter csvWriter = new CsvWriter(c, iFetcher.getListProduct());

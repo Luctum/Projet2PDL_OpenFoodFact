@@ -20,7 +20,7 @@ public class MongoDbFetcher implements IFetcher {
     private Config config;
     private List<Product> listProduct;
 
-    public MongoDbFetcher( Config config, String dbName)
+    public MongoDbFetcher(Config config)
     {
         this.config = config;
         try {
@@ -28,7 +28,7 @@ public class MongoDbFetcher implements IFetcher {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        DB database = this.mongoClient.getDB(dbName);
+        DB database = this.mongoClient.getDB(config.getDbName());
         dbCollection = database.getCollection(config.getCollectionName());
         listProduct = new ArrayList<Product>();
     }

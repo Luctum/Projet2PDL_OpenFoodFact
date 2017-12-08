@@ -11,5 +11,5 @@
   "provider": "mongo",
   "mongoPort": 27017,
   "collectionName": "products",
-  "dbName": "openfoodfact"
+  "dbName": "pdl"
 }
