@@ -29,9 +29,9 @@ public class MongoDbFetcher implements IFetcher {
 
     public  DBCollection getDbCollection()
     {
-        System.out.println(" Getting Database");
+        System.out.println("Connection to the Database");
         DB database = getDB();
-        System.out.println(" Getting Database done");
+        System.out.println("Connected to the Database");
         DBCollection Collection = database.getCollection(config.getCollectionName());
         return  Collection;
     }
