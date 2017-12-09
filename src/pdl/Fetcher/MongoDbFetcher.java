@@ -23,14 +23,29 @@ public class MongoDbFetcher implements IFetcher {
     public MongoDbFetcher(Config config)
     {
         this.config = config;
+        dbCollection = getDbCollection();
+        listProduct = new ArrayList<>();
+    }
+
+    public  DBCollection getDbCollection()
+    {
+        System.out.println(" Getting Database");
+        DB database = getDB();
+        System.out.println(" Getting Database done");
+        DBCollection Collection = database.getCollection(config.getCollectionName());
+        return  Collection;
+    }
+
+    public DB getDB()
+    {
+        System.out.println(" get name "+this.config.getDbName());
+
         try {
-            this.mongoClient = new MongoClient("localhost" , config.getMongoPort() );
+            this.mongoClient = new MongoClient("localhost" , this.config.getMongoPort() );
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        DB database = this.mongoClient.getDB(config.getDbName());
-        dbCollection = database.getCollection(config.getCollectionName());
-        listProduct = new ArrayList<Product>();
+        return this.mongoClient.getDB(this.config.getDbName());
     }
 
     @Override
@@ -42,7 +57,8 @@ public class MongoDbFetcher implements IFetcher {
         query.put(this.config.getFieldToSearch(), new BasicDBObject("$in", this.config.getSearchWords()));
         DBCursor DBcursor = dbCollection.find (query);
         while(DBcursor.hasNext()) {
-            products.add(DBcursor.next()+"");
+            String result = DBcursor.next()+"";
+            products.add(result);
         }
         System.out.println("Executing getProducts done");
         return products;
