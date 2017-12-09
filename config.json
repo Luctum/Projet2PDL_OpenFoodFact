@@ -1,15 +1,12 @@
 {
-  "fieldToSearch" : "product_name",
+  "fieldToSearch" : "categories_tags",
   "searchWords": [
-    "Choco Bites",
-    "Chocapic",
-    "nutella",
-    "La vache qui rit"
+    "en:beverages"
   ],
   "filters": {
   },
   "provider": "mongo",
   "mongoPort": 27017,
   "collectionName": "products",
-  "dbName": "dumpOFF"
+  "dbName": "pdl"
 }
