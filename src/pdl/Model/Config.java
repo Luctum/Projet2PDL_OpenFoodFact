@@ -13,6 +13,7 @@ public class Config {
     private Map<String, String> filters;
     private String collectionName;
     private String dbName;
+    private String provider;
 
 
     public Config(){
@@ -23,6 +24,7 @@ public class Config {
         this.mongoPort = 27017;
         this.collectionName = "products";
         this.dbName = "";
+        this.provider = "api";
     }
 
     public Map<String, String> getFilters() {
@@ -73,6 +75,14 @@ public class Config {
         this.dbName = dbName;
     }
 
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -85,6 +95,8 @@ public class Config {
             s.append(key).append(" = ").append(value);
             s.append(System.getProperty("line.separator"));
         });
+        s.append("Provider : ").append(this.provider);
+        s.append(System.getProperty("line.separator"));
         s.append("Mongo Port : ").append(this.mongoPort);
         s.append(System.getProperty("line.separator"));
         s.append("Collection name : ").append(this.collectionName);
@@ -93,5 +105,6 @@ public class Config {
         s.append(System.getProperty("line.separator"));
         return s.toString();
     }
+
 
 }

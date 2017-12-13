@@ -39,10 +39,15 @@ public  class ConfigReader {
             System.out.println("ERROR : Missing or empty 'searchWords' property");
             return false;
         }
-        if(c.getDbName().equals("")){
+        if(c.getProvider().equals("mongo") && c.getDbName().equals("")){
             System.out.println("ERROR : Missing or empty 'dbName' property while using 'mongo' provider");
             return false;
         }
+        if(!(c.getProvider().equals("api") || c.getProvider().equals("mongo"))){
+            System.out.println("ERROR : Unrecognised provider, please use 'api' or 'mongo' ");
+            return false;
+        }
+
         return true;
     }
 

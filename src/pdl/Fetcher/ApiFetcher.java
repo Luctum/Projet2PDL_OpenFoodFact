@@ -6,6 +6,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import pdl.Model.Config;
+import pdl.Model.Product;
 import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
@@ -49,13 +50,18 @@ public class ApiFetcher implements IFetcher {
      */
     private List<String> products;
 
+    /**
+    * List of instanciated products
+     */
+    private List<Product> listProduct;
+
 
     /**
      * Preferred Constructor
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
-    public ApiFetcher() throws Exception {
-        this.file = ConfigReader.readConfig();
+    public ApiFetcher(Config c) throws Exception {
+        this.file = c;
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
@@ -139,7 +145,7 @@ public class ApiFetcher implements IFetcher {
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductName"), this.getClass().getMethod("setSearchByProductName", String.class));
             case "code":
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByCode", String.class));
-            case "category":
+            case "categories_tags":
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByCategory"), this.getClass().getMethod("setSearchByCategory", String.class));
             default:
                 return null;
@@ -209,4 +215,7 @@ public class ApiFetcher implements IFetcher {
         return this.searchUrlByCategory;
     }
 
+    public List<Product> getListProduct() {
+        return listProduct;
+    }
 }

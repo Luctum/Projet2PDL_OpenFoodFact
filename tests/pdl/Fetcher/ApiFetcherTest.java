@@ -2,6 +2,7 @@ package pdl.Fetcher;
 
 import org.junit.Before;
 import org.junit.Test;
+import pdl.Utils.ConfigReader;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +16,7 @@ public class ApiFetcherTest {
     private ApiFetcher apiFetcher;
     @Before
     public void setUp() throws Exception {
-        this.apiFetcher = new ApiFetcher();
+        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig());
     }
 
     /**
