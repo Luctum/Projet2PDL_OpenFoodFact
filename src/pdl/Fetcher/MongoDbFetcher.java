@@ -29,7 +29,7 @@ public class MongoDbFetcher implements IFetcher {
 
     public  DBCollection getDbCollection()
     {
-        System.out.println("Connection to the Database");
+        System.out.println("Connecting to the Database");
         DB database = getDB();
         System.out.println("Connected to the Database");
         DBCollection Collection = database.getCollection(config.getCollectionName());
