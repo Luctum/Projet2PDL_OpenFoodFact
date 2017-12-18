@@ -52,6 +52,11 @@ public class ApiFetcherTest {
         assertEquals(url, this.apiFetcher.getSearchUrlByProductByCode());
     }
 
+    @Test
+    public void prettyprinter() throws Exception{
+        this.apiFetcher.formatJsonString(this.apiFetcher.getProducts());
+    }
+
     /**
      *
      * @throws Exception
