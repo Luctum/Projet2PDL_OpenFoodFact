@@ -21,6 +21,11 @@ import java.util.List;
  * @author : Marlène Akimana
  */
 public class ApiFetcher implements IFetcher {
+
+    /**
+     *
+     */
+    private boolean isCategory;
     /**
      * configuration file from the client
      */
@@ -61,6 +66,7 @@ public class ApiFetcher implements IFetcher {
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
     public ApiFetcher(Config c) throws Exception {
+        this.isCategory = false;
         this.file = c;
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
@@ -149,6 +155,7 @@ public class ApiFetcher implements IFetcher {
             case "code":
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByCode", String.class));
             case "categories_tags":
+                this.isCategory = true;
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByCategory"), this.getClass().getMethod("setSearchByCategory", String.class));
             default:
                 return null;
