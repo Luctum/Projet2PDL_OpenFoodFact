@@ -1,5 +1,6 @@
 package pdl.Fetcher;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -7,7 +8,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import pdl.Model.Config;
 import pdl.Model.Product;
-import pdl.Utils.ConfigReader;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -99,7 +99,9 @@ public class ApiFetcher implements IFetcher {
                     e.printStackTrace();
                 }
                 try {
-                    products.add(this.run((String) getMethod.invoke(this)).string());
+                    ResponseBody r = this.run((String) getMethod.invoke(this));
+                    String productNode = new ObjectMapper().readTree(r.string()).get("product").asText();
+                    products.add(productNode);
                 } catch (IOException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
@@ -113,7 +115,8 @@ public class ApiFetcher implements IFetcher {
      * @throws Exception
      */
     public void formatJsonString(List<String> products) throws Exception {
-       products.forEach(product -> {
+        assert products != null;
+        products.forEach(product -> {
            ObjectMapper mapper = new ObjectMapper();
            try {
                Object jsonObject = mapper.readValue(product, Object.class);
@@ -157,8 +160,8 @@ public class ApiFetcher implements IFetcher {
      * @param responseBody Object rendered by the API
      * @return status of an object
      */
-    public String getStatus(ResponseBody responseBody){
-        return "";
+    public int getStatus(ResponseBody responseBody) throws IOException {
+        return new ObjectMapper().readTree(responseBody.string()).get("status").asInt();
     }
 
     /**
@@ -166,8 +169,8 @@ public class ApiFetcher implements IFetcher {
      * @param responseBody Object rendered by the API
      * @return number of pages of a product
      */
-    public int pages(ResponseBody responseBody){
-        return 0;
+    public int pages(ResponseBody responseBody) throws IOException {
+        return new ObjectMapper().readTree(responseBody.string()).get("page_size").asInt();
     }
 
     /**
