@@ -31,8 +31,7 @@ public class AppController {
         }*/
 
         ApiFetcher f = new ApiFetcher(c);
-        List<String> p = f.getProducts();
-        p.forEach(System.out::println);
+        f.formatJsonString(f.getProducts());
     }
 
     public static void setFetcherAndRun(Config c, IFetcher fetcher){
