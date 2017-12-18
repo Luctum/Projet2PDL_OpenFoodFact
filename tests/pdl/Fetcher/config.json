@@ -1,7 +1,7 @@
 {
-  "fieldToSearch" : "categories_tags",
+  "fieldToSearch" : "product_name",
   "searchWords": [
-    "en:beverages"
+    "737628064502"
   ],
   "filters": {
   },
