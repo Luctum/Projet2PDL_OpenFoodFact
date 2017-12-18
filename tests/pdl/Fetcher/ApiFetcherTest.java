@@ -1,8 +1,11 @@
 package pdl.Fetcher;
 
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import pdl.Utils.ConfigReader;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -59,5 +62,24 @@ public class ApiFetcherTest {
         String url = "https://ssl-api.openfoodfacts.org/category/pizzas/1.json";
         assertEquals(url, this.apiFetcher.getSearchUrlByCategory());
     }
+    @Test
+    public void pagesTest1() throws Exception{
+        this.apiFetcher.setSearchByCategory("pizzas");
+        ResponseBody r = this.apiFetcher.run(this.apiFetcher.getSearchUrlByCategory());
+        assertEquals(20, this.apiFetcher.pages(r));
+    }
 
+    @Test
+    public void statusTest1() throws Exception{
+        this.apiFetcher.setSearchByProductName("737628064502");
+        ResponseBody r = this.apiFetcher.run(this.apiFetcher.getSearchUrlByProductName());
+        assertEquals(1, this.apiFetcher.getStatus(r));
+    }
+
+    @Test
+    public void statusTest2() throws Exception{
+        this.apiFetcher.setSearchByCategory("pizzas");
+        ResponseBody r = this.apiFetcher.run(this.apiFetcher.getSearchUrlByCategory());
+        assertEquals(1, this.apiFetcher.getStatus(r));
+    }
 }
