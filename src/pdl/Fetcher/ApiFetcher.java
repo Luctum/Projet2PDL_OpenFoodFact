@@ -1,6 +1,4 @@
 package pdl.Fetcher;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -8,7 +6,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import pdl.Model.Config;
 import pdl.Model.Product;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -106,7 +103,18 @@ public class ApiFetcher implements IFetcher {
                 }
                 try {
                     ResponseBody r = this.run((String) getMethod.invoke(this));
-                    String productNode = new ObjectMapper().readTree(r.string()).get("product").asText();
+                    /**
+                     if(this.isCategory) {
+                     int page_size = this.pages(r);
+                     for(int i = 0; i < page_size; i++){
+                     this.setSearchByCategory(keyword + "/" + i);
+                     ResponseBody newResponse = this.run(this.getSearchUrlByCategory());
+                     String category_product = new ObjectMapper().readTree(newResponse.string()).get("product").toString();
+                     products.add(category_product);
+                     }
+                     }
+                     */
+                    String productNode = new ObjectMapper().readTree(r.string()).get("products").toString();
                     products.add(productNode);
                 } catch (IOException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
