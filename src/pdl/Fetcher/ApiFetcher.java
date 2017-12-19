@@ -23,6 +23,8 @@ public class ApiFetcher implements IFetcher {
      *
      */
     private boolean isCategory;
+    private boolean isCode;
+    private boolean isProduct;
     /**
      * configuration file from the client
      */
@@ -64,6 +66,8 @@ public class ApiFetcher implements IFetcher {
      */
     public ApiFetcher(Config c) throws Exception {
         this.isCategory = false;
+        this.isCode = false;
+        this.isProduct = false;
         this.file = c;
         this.client= new OkHttpClient();
         this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
@@ -94,6 +98,7 @@ public class ApiFetcher implements IFetcher {
         PairImpl<Method, Method> p = this.searchMethod(this.file.getFieldToSearch());
         if(p != null) {
             this.file.getSearchWords().forEach(keyword -> {
+                String productNode;
                 Method getMethod = p.getKey();
                 Method setMethod = p.getValue();
                 try {
@@ -103,19 +108,22 @@ public class ApiFetcher implements IFetcher {
                 }
                 try {
                     ResponseBody r = this.run((String) getMethod.invoke(this));
-                    /**
-                     if(this.isCategory) {
-                     int page_size = this.pages(r);
-                     for(int i = 0; i < page_size; i++){
-                     this.setSearchByCategory(keyword + "/" + i);
-                     ResponseBody newResponse = this.run(this.getSearchUrlByCategory());
-                     String category_product = new ObjectMapper().readTree(newResponse.string()).get("product").toString();
-                     products.add(category_product);
-                     }
-                     }
-                     */
-                    String productNode = new ObjectMapper().readTree(r.string()).get("products").toString();
-                    products.add(productNode);
+                    assert r != null;
+                    if(this.isProduct) {
+                        productNode = new ObjectMapper().readTree(r.string()).get("product").toString();
+                        products.add(productNode);
+                    }else if(this.isCode){
+                        productNode = new ObjectMapper().readTree(r.string()).get("products").toString();
+                        products.add(productNode);
+                    }else{
+                        int page_size = this.pages(r);
+                        for (int i = 0; i < page_size; i++) {
+                            this.setSearchByCategory(keyword + "/" + i);
+                            ResponseBody newResponse = this.run(this.getSearchUrlByCategory());
+                            String category_product = new ObjectMapper().readTree(newResponse.string()).get("products").toString();
+                            products.add(category_product);
+                        }
+                    }
                 } catch (IOException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
@@ -159,8 +167,10 @@ public class ApiFetcher implements IFetcher {
     public PairImpl<Method, Method> searchMethod(String fieldToSearch) throws NoSuchMethodException {
         switch (fieldToSearch) {
             case "product_name":
+                this.isProduct = true;
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductName"), this.getClass().getMethod("setSearchByProductName", String.class));
             case "code":
+                this.isCode = true;
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByCode", String.class));
             case "categories_tags":
                 this.isCategory = true;
