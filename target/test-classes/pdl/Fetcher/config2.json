@@ -1,0 +1,7 @@
+{
+  "fieldToSearch" : "categories_tag",
+  "searchWords": [
+    "en:beverages"
+  ],
+  "provider": "api"
+}

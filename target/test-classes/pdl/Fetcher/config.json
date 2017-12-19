@@ -1,9 +1,8 @@
 {
-  "fieldToSearch" : "categories_tags",
+  "fieldToSearch" : "code",
   "searchWords": [
-    "en:beverages"
+    "737628064502",
+    "3029330003533"
   ],
-  "filters": {
-  },
   "provider": "api"
 }

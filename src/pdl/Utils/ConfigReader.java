@@ -13,6 +13,10 @@ public  class ConfigReader {
     private static final String CONFIG_PATH = "config.json";
 
     public static Config readConfig() throws Exception {
+        return readConfig(CONFIG_PATH);
+    }
+
+    public static Config readConfig(String path) throws Exception {
         Gson gson = new Gson();
         try {
             BufferedReader br;
@@ -24,7 +28,6 @@ public  class ConfigReader {
             e.printStackTrace();
             System.out.println("Impossible de trouver le fichier de configuration : " + CONFIG_PATH);
         }
-
         return new Config();
     }
 

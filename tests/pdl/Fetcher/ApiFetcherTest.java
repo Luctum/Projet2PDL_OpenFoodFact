@@ -17,7 +17,7 @@ public class ApiFetcherTest {
     private ApiFetcher apiFetcher;
     @Before
     public void setUp() throws Exception {
-        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig());
+        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig("config.json"));
     }
 
     /**
@@ -49,16 +49,6 @@ public class ApiFetcherTest {
         this.apiFetcher.setSearchByCode("3017624047813");
         String url = "https://ssl-api.openfoodfacts.org/code/3017624047813.json";
         assertEquals(url, this.apiFetcher.getSearchUrlByProductByCode());
-    }
-
-    /**
-     * Client test to display information from the api
-     * @throws Exception
-     */
-    @Test
-    public void prettyprinter() throws Exception{
-        //this.apiFetcher.formatJsonString(this.apiFetcher.getProducts());
-        assertTrue(true);
     }
 
     /**
