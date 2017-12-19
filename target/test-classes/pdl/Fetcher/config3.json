@@ -4,5 +4,8 @@
     "737628064502",
     "3029330003533"
   ],
-  "provider": "api"
+  "provider": "api",
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "openfoodfact"
 }

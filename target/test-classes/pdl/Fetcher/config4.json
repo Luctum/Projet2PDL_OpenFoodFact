@@ -3,5 +3,8 @@
   "searchWords": [
     "en:beverages"
   ],
-  "provider": "mongo"
+  "provider": "mongo",
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "openfoodfact"
 }
