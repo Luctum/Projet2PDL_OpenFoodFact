@@ -1,7 +1,6 @@
-package pdl.Fetcher;
+package pdl_group9.Fetcher;
 
-import pdl.Model.Config;
-import pdl.Model.Product;
+import pdl_group9.Model.Product;
 
 import java.util.List;
 

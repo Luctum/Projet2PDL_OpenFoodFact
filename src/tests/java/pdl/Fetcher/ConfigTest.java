@@ -1,8 +1,9 @@
 package pdl.Fetcher;
 
 import org.junit.Test;
-import pdl.Model.Config;
-import pdl.Utils.ConfigReader;
+import pdl_group9.Model.Config;
+
+import pdl_group9.Utils.ConfigReader;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +17,7 @@ public class ConfigTest {
      */
     @Test
     public void configTestGoodConfig() throws Exception {
-        Config c1 = ConfigReader.readConfig("config.json");
+        Config c1 = ConfigReader.readConfig("../resources/config.json");
         assertNotNull(c1);
     }
 

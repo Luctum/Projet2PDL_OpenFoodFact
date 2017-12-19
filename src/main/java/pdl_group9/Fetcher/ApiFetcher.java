@@ -1,4 +1,4 @@
-package pdl.Fetcher;
+package pdl_group9.Fetcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -6,10 +6,9 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pdl.Model.Config;
-import pdl.Model.Product;
+import pdl_group9.Model.Config;
+import pdl_group9.Model.Product;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -163,37 +162,42 @@ public class ApiFetcher implements IFetcher {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
+        assert listStr != null;
         Iterator<String> it = listStr.iterator();
         while(it.hasNext()){
             Product product = new Product();
             JSONObject json = null;
             StringBuilder str = new StringBuilder(it.next());
-            str.deleteCharAt(0);
-            str.deleteCharAt(str.length()-1);
-            try {
-                json = json = new JSONObject(str.toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if(!str.toString().equals("[]") || !str.toString().equals("")){
+                str.deleteCharAt(0);
+                str.deleteCharAt(str.length()-1);
+                try {
+                    json = json = new JSONObject(str.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                product.setName(this.getField(json,"product_name"));
+                product.setNutritionGrade(this.getField(json,"nutrition_grades"));
+                try {
+                    json = (JSONObject)json.get("nutriments");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                product.addNutriment("sugars_100g", this.getField(json,"sugars_100g"));
+                product.addNutriment("fiber_100g",this.getField(json,"fiber_100g"));
+                product.addNutriment("sodium_100g",this.getField(json,"sodium_100g"));
+                product.addNutriment("carbohydrates_100g",this.getField(json,"carbohydrates_100g"));
+                product.addNutriment("fat_100g",this.getField(json,"fat_100g"));
+                product.addNutriment("salt_100g",this.getField(json,"salt_100g"));
+                product.addNutriment("proteins_100g",this.getField(json,"proteins_100g"));
+                product.addNutriment("saturated_fat_100g", this.getField(json,"saturated_fat_100g"));
+                product.addNutriment("energy_100g", this.getField(json,"energy_100g"));
+                this.listProduct.add(product);
+                System.out.println("Executing prettify done");
+            }else{
+                System.out.println("Nothing has been found");
             }
-            product.setName(this.getField(json,"product_name"));
-            product.setNutritionGrade(this.getField(json,"nutrition_grades"));
-            try {
-                json = (JSONObject)json.get("nutriments");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            product.addNutriment("sugars_100g", this.getField(json,"sugars_100g"));
-            product.addNutriment("fiber_100g",this.getField(json,"fiber_100g"));
-            product.addNutriment("sodium_100g",this.getField(json,"sodium_100g"));
-            product.addNutriment("carbohydrates_100g",this.getField(json,"carbohydrates_100g"));
-            product.addNutriment("fat_100g",this.getField(json,"fat_100g"));
-            product.addNutriment("salt_100g",this.getField(json,"salt_100g"));
-            product.addNutriment("proteins_100g",this.getField(json,"proteins_100g"));
-            product.addNutriment("saturated_fat_100g", this.getField(json,"saturated_fat_100g"));
-            product.addNutriment("energy_100g", this.getField(json,"energy_100g"));
-            this.listProduct.add(product);
         }
-        System.out.println("Executing prettify done");
     }
 
 

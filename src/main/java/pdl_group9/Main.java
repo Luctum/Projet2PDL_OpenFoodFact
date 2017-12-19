@@ -1,6 +1,6 @@
-package pdl;
+package pdl_group9;
 
-import pdl.Controller.AppController;
+import pdl_group9.Controller.AppController;
 
 public class Main {
 

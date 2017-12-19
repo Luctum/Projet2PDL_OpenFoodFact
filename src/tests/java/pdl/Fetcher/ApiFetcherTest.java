@@ -3,8 +3,9 @@ package pdl.Fetcher;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
-import pdl.Model.Product;
-import pdl.Utils.ConfigReader;
+import pdl_group9.Fetcher.ApiFetcher;
+import pdl_group9.Model.Product;
+import pdl_group9.Utils.ConfigReader;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ApiFetcherTest {
     private ApiFetcher apiFetcher;
     @Before
     public void setUp() throws Exception {
-        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig("config.json"));
+        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig("../resources/config.json"));
     }
 
     /**

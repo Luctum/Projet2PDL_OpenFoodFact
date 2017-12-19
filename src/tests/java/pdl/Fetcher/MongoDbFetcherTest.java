@@ -2,15 +2,15 @@ package pdl.Fetcher;
 
 import org.junit.Before;
 import org.junit.Test;
-import pdl.Model.Config;
-import pdl.Model.Product;
-import pdl.Utils.ConfigReader;
+import pdl_group9.Model.Config;
+import pdl_group9.Model.Product;
+import pdl_group9.Utils.ConfigReader;
+import pdl_group9.Fetcher.MongoDbFetcher;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class MongoDbFetcherTest {
 
@@ -23,7 +23,7 @@ public class MongoDbFetcherTest {
      */
     @Before
     public void setUp() throws Exception {
-        this.mongoDbFetcher = new MongoDbFetcher(ConfigReader.readConfig("config2.json"));
+        this.mongoDbFetcher = new MongoDbFetcher(ConfigReader.readConfig("../resources/config2.json"));
     }
 
     /**

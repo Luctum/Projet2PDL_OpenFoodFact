@@ -1,11 +1,10 @@
-package pdl.Fetcher;
+package pdl_group9.Fetcher;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import pdl.Model.Config;
-import com.google.gson.JsonObject;
+import pdl_group9.Model.Config;
 import com.mongodb.*;
-import pdl.Model.Product;
+import pdl_group9.Model.Product;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
-package pdl.Model;
+package pdl_group9.Model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Config {
 

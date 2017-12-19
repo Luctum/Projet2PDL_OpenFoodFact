@@ -13,12 +13,13 @@ Current dependencies:
 ## Configuration
 
 Edit the config.json file at the root of the project.
-Multiple example config.json files are at the root in order to quickly test the program, you just need to rename them "config.json" to use them.
+Multiple example config.json files are at the root in order to quickly test the program. You just need to rename them "config.json" to use them.
 
 ### Which field to search
 
 filedToSearch : The name of the field where to search in the OpenFoodfact database. 
-Supported fields are "categories_tags", "product_name" and "code".
+
+Supported fields are "categories_tags", "product_name" and "code" (check "providers" section to check which provider do what).
 
 Be careful that using categories_tags could load several tens of thousands of data.
 
@@ -37,13 +38,17 @@ provider : Which dump do you want to use in order to retreive the data. (eg: "ap
 #### In the case of _mongo_ : 
 
 mongoPort : The port you are using to run mongoDb. (optionnal: 27017 by default)
+
 collectionName : Name of your mongoDb collection (optionnal: "products" by default)
+
 dbName : Name of your database.
 
 #### In the case of _api_ :
 
 Be aware that this provider is under development and is subject to change, both on our side and on OpenFoodFact's side.
-Currently, "categories_tag" field is not supported by the "api" provider.
+
+Currently neither "categories_tag" nor "product_name" fields are supported by the "api" provider. 
+But you can use "code", which is nice.
 
 #### Complete example : 
 ```

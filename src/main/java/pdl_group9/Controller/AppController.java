@@ -1,13 +1,12 @@
-package pdl.Controller;
+package pdl_group9.Controller;
 
-import pdl.Fetcher.ApiFetcher;
-import pdl.Fetcher.IFetcher;
-import pdl.Fetcher.MongoDbFetcher;
-import pdl.Model.Config;
-import pdl.Utils.ConfigReader;
-import pdl.Utils.CsvWriter;
 
-import java.util.List;
+import pdl_group9.Fetcher.ApiFetcher;
+import pdl_group9.Fetcher.IFetcher;
+import pdl_group9.Fetcher.MongoDbFetcher;
+import pdl_group9.Model.Config;
+import pdl_group9.Utils.ConfigReader;
+import pdl_group9.Utils.CsvWriter;
 
 public class AppController {
 

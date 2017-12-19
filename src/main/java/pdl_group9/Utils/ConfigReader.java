@@ -1,8 +1,8 @@
-package pdl.Utils;
+package pdl_group9.Utils;
 
 import com.google.gson.Gson;
 import com.sun.javaws.exceptions.InvalidArgumentException;
-import pdl.Model.Config;
+import pdl_group9.Model.Config;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -53,9 +53,8 @@ public  class ConfigReader {
         if(!(c.getProvider().equals("api") || c.getProvider().equals("mongo"))){
             throw new Exception("Unrecognised provider, please use 'api' or 'mongo' ");
         }
-        if(c.getProvider().equals("api") && c.getFieldToSearch().equals("categories_tags")){
-            throw new Exception("Invalid 'categories_tags' property while using 'api' provider");
+        if(c.getProvider().equals("api") && (c.getFieldToSearch().equals("categories_tags") || (c.getFieldToSearch().equals("product_name")))){
+            throw new Exception("Invalid '"+ c.getFieldToSearch() +"' field while using 'api' provider");
         }
     }
-
 }

@@ -1,7 +1,7 @@
-package pdl.Utils;
+package pdl_group9.Utils;
 
-import pdl.Model.Config;
-import pdl.Model.Product;
+import pdl_group9.Model.Config;
+import pdl_group9.Model.Product;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
