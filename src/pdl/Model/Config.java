@@ -10,7 +10,6 @@ public class Config {
     private int mongoPort;
     private String fieldToSearch;
     private List<String> searchWords;
-    private Map<String, String> filters;
     private String collectionName;
     private String dbName;
     private String provider;
@@ -19,20 +18,11 @@ public class Config {
     public Config(){
         this.fieldToSearch = "";
         this.searchWords = new ArrayList<String>();
-        this.filters = new HashMap<>();
         // Default mongo port
         this.mongoPort = 27017;
         this.collectionName = "products";
         this.dbName = "";
         this.provider = "api";
-    }
-
-    public Map<String, String> getFilters() {
-        return this.filters;
-    }
-
-    public void setFilters(Map<String, String> filters) {
-        this.filters = filters;
     }
 
     public List<String> getSearchWords(){
@@ -89,12 +79,7 @@ public class Config {
         s.append("searchWords : ");
         this.searchWords.forEach((key) -> s.append(key).append(","));
         s.append(System.getProperty("line.separator"));
-        s.append("Filters : ");
         s.append(System.getProperty("line.separator"));
-        this.filters.forEach((key, value) -> {
-            s.append(key).append(" = ").append(value);
-            s.append(System.getProperty("line.separator"));
-        });
         s.append("Provider : ").append(this.provider);
         s.append(System.getProperty("line.separator"));
         s.append("Mongo Port : ").append(this.mongoPort);

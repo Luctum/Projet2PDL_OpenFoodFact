@@ -1,6 +1,5 @@
 package pdl.Fetcher;
 
-import org.junit.Before;
 import org.junit.Test;
 import pdl.Model.Config;
 import pdl.Utils.ConfigReader;
