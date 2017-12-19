@@ -13,7 +13,7 @@ Current dependencies:
 ## Configuration
 
 Edit the config.json file at the root of the project.
-Multiple example config.json files are at the root in order to quickly test the program.
+Multiple example config.json files are at the root in order to quickly test the program, you just need to rename them "config.json" to use them.
 
 ### Which field to search
 
