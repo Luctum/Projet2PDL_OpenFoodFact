@@ -38,7 +38,7 @@ public  class ConfigReader {
         if(c.getSearchWords().isEmpty()){
             throw new Exception("Missing or empty 'searchWords' property");
         }
-        if(!(c.getFieldToSearch().equals("categories_tags") || c.getFieldToSearch().equals("product") || c.getFieldToSearch().equals("code"))){
+        if(!(c.getFieldToSearch().equals("categories_tags") || c.getFieldToSearch().equals("product_name") || c.getFieldToSearch().equals("code"))){
             throw new Exception("Unsupported field " + c.getFieldToSearch());
         }
         if(c.getProvider().equals("mongo") && c.getDbName().equals("")){
