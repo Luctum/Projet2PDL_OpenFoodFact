@@ -1,6 +1,7 @@
 package pdl.Utils;
 
 import com.google.gson.Gson;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import pdl.Model.Config;
 
 import java.io.BufferedReader;
@@ -17,9 +18,7 @@ public  class ConfigReader {
             BufferedReader br;
             br = new BufferedReader(new FileReader(CONFIG_PATH));
             Config c = gson.fromJson(br , Config.class);
-            if(!checkConfig(c)){
-                throw new Exception();
-            }
+            checkConfig(c);
             return c;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -34,21 +33,26 @@ public  class ConfigReader {
      * @param c Config
      * @return boolean true if config is well defined, else return false
      */
-    private static boolean checkConfig(Config c){
+    public static void checkConfig(Config c) throws Exception {
+        if(c == null) throw new InvalidArgumentException(new String[]{"'c' must not be null"});
         if(c.getSearchWords().isEmpty()){
-            System.out.println("ERROR : Missing or empty 'searchWords' property");
-            return false;
+            throw new Exception("Missing or empty 'searchWords' property");
+        }
+        if(!(c.getFieldToSearch().equals("categories_tags") || c.getFieldToSearch().equals("product") || c.getFieldToSearch().equals("code"))){
+            throw new Exception("Unsupported field " + c.getFieldToSearch());
         }
         if(c.getProvider().equals("mongo") && c.getDbName().equals("")){
-            System.out.println("ERROR : Missing or empty 'dbName' property while using 'mongo' provider");
-            return false;
+            throw new Exception("Missing or empty 'dbName' property while using 'mongo' provider");
         }
         if(!(c.getProvider().equals("api") || c.getProvider().equals("mongo"))){
-            System.out.println("ERROR : Unrecognised provider, please use 'api' or 'mongo' ");
-            return false;
+            throw new Exception("Unrecognised provider, please use 'api' or 'mongo' ");
         }
-
-        return true;
+        if(!(c.getProvider().equals("api") || c.getProvider().equals("mongo"))){
+            throw new Exception("Unrecognised provider, please use 'api' or 'mongo' ");
+        }
+        if(c.getProvider().equals("api") && c.getFieldToSearch().equals("categories_tags")){
+            throw new Exception("Invalid 'categories_tags' property while using 'api' provider");
+        }
     }
 
 }
