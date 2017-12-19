@@ -17,7 +17,7 @@ public class ConfigTest {
      */
     @Test
     public void configTestGoodConfig() throws Exception {
-        Config c1 = ConfigReader.readConfig("../resources/config.json");
+        Config c1 = ConfigReader.readConfig("src/tests/resources/config1.json");
         assertNotNull(c1);
     }
 

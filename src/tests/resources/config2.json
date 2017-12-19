@@ -1,7 +1,6 @@
 {
   "fieldToSearch" : "code",
   "searchWords": [
-    "737628064502",
     "3029330003533"
   ],
   "provider": "mongo",

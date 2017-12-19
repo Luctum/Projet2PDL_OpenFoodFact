@@ -21,7 +21,7 @@ public class ApiFetcherTest {
     private ApiFetcher apiFetcher;
     @Before
     public void setUp() throws Exception {
-        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig("../resources/config.json"));
+        this.apiFetcher = new ApiFetcher(ConfigReader.readConfig("src/tests/resources/config1.json"));
     }
 
     /**

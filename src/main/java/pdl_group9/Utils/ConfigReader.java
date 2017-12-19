@@ -20,19 +20,19 @@ public  class ConfigReader {
         Gson gson = new Gson();
         try {
             BufferedReader br;
-            br = new BufferedReader(new FileReader(CONFIG_PATH));
+            br = new BufferedReader(new FileReader(path));
             Config c = gson.fromJson(br , Config.class);
             checkConfig(c);
             return c;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Impossible de trouver le fichier de configuration : " + CONFIG_PATH);
+            System.out.println("Config file not found : " + path);
         }
         return new Config();
     }
 
     /**
-     * Check if the config.json file is complete
+     * Check if the config1.json file is complete
      * @param c Config
      * @return boolean true if config is well defined, else return false
      */
