@@ -5,13 +5,8 @@
   ],
   "filters": {
   },
-<<<<<<< Updated upstream
   "provider": "mongo",
-  "dbName": "pdl"
-=======
-  "provider": "api",
   "mongoPort": 27017,
   "collectionName": "products",
   "dbName": "openfoodfact"
->>>>>>> Stashed changes
 }
