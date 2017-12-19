@@ -7,6 +7,7 @@ import okhttp3.ResponseBody;
 import pdl.Model.Config;
 import pdl.Model.Product;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -117,8 +118,8 @@ public class ApiFetcher implements IFetcher {
                         products.add(productNode);
                     }else{
                         int page_size = this.pages(r);
-                        for (int i = 0; i < page_size; i++) {
-                            this.setSearchByCategory(keyword + "/" + i);
+                        for (int i = 1; i < page_size; i++) {
+                            this.setSearchByCategory(keyword + "/" + 1);
                             ResponseBody newResponse = this.run(this.getSearchUrlByCategory());
                             String category_product = new ObjectMapper().readTree(newResponse.string()).get("products").toString();
                             products.add(category_product);
@@ -203,6 +204,7 @@ public class ApiFetcher implements IFetcher {
      * @param keyword product name
      */
     public void setSearchByProductName(String keyword){
+        this.searchUrlByProductName = "https://ssl-api.openfoodfacts.org/api/v0/product/";
         this.searchUrlByProductName = this.getSearchUrlByProductName() + keyword + this.jsonExtension;
     }
 
@@ -211,6 +213,7 @@ public class ApiFetcher implements IFetcher {
      * @param code any product code in Open Food Facts
      */
     public void setSearchByCode(String code){
+        this.searchUrlByProductByCode = "https://ssl-api.openfoodfacts.org/code/";
         this.searchUrlByProductByCode = this.getSearchUrlByProductByCode() + code + this.jsonExtension;
     }
 
@@ -219,6 +222,7 @@ public class ApiFetcher implements IFetcher {
      * @param category any category in Open Food Facts
      */
     public void setSearchByCategory(String category){
+        this.searchUrlByCategory = "https://ssl-api.openfoodfacts.org/category/";
         this.searchUrlByCategory = this.getSearchUrlByCategory() + category + this.jsonExtension;
     }
 
