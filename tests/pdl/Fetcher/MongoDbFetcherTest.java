@@ -3,7 +3,10 @@ package pdl.Fetcher;
 import org.junit.Before;
 import org.junit.Test;
 import pdl.Model.Config;
+import pdl.Model.Product;
 import pdl.Utils.ConfigReader;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -20,8 +23,7 @@ public class MongoDbFetcherTest {
      */
     @Before
     public void setUp() throws Exception {
-        config = ConfigReader.readConfig();
-        mongoDbFetcher = new MongoDbFetcher(config);
+        this.mongoDbFetcher = new MongoDbFetcher(ConfigReader.readConfig("config.json"));
     }
 
     /**
@@ -42,5 +44,41 @@ public class MongoDbFetcherTest {
     public void getDbCollection()  throws Exception
     {
         assertFalse("The collection est null", mongoDbFetcher.getDbCollection() == null);
+    }
+
+    @Test
+    public void getProductName()  throws Exception
+    {
+        mongoDbFetcher.prettify();
+        List<Product> products = mongoDbFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "Crousti Moelleux Complet", product.getName());
+    }
+
+    @Test
+    public void getProductNutritionGrade()  throws Exception
+    {
+        mongoDbFetcher.prettify();
+        List<Product> products = mongoDbFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "a", product.getNutritionGrade());
+    }
+
+    @Test
+    public void getProductNutriment()  throws Exception
+    {
+        mongoDbFetcher.prettify();
+        List<Product> products = mongoDbFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "7.0", product.getNutriment("sugars_100g"));
+        assertEquals( "5.5", product.getNutriment("fiber_100g"));
+        assertEquals( "0.452755905511811", product.getNutriment("sodium_100g"));
+        assertEquals( "43", product.getNutriment("carbohydrates_100g"));
+        assertEquals( "4", product.getNutriment("fat_100g"));
+        assertEquals( "1.15", product.getNutriment("salt_100g"));
+        assertEquals( "9.0", product.getNutriment("proteins_100g"));
+        assertEquals( "", product.getNutriment("saturated_fat_100g"));
+        assertEquals( "1076.0", product.getNutriment("energy_100g"));
+
     }
 }

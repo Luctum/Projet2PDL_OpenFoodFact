@@ -2,6 +2,7 @@ package pdl.Model;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 public class Product {
 	
@@ -9,10 +10,10 @@ public class Product {
 	
 	private String nutritionGrade;
 	
-	private HashMap<String,String> nutriments;
+	private LinkedHashMap<String,String> nutriments;
 
 	public Product() {
-		nutriments = new HashMap<String, String>();
+		nutriments = new LinkedHashMap<String, String>();
 	}
 
 	public String getName() {
@@ -37,6 +38,10 @@ public class Product {
 	
 	public void removeNutriment(String name){
 		this.nutriments.remove(name);
+	}
+
+	public String getNutriment(String key){
+		return this.nutriments.get(key);
 	}
 
 	public String toString(){

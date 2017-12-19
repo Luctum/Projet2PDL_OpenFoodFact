@@ -6,5 +6,7 @@
   "filters": {
   },
   "provider": "mongo",
-  "dbName": "pdl"
+  "mongoPort": 27017,
+  "collectionName": "products",
+  "dbName": "openfoodfact"
 }
