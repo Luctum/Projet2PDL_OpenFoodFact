@@ -15,17 +15,24 @@ Current dependencies:
 Edit the config.json file at the root of the project.
 Multiple example config.json files are at the root in order to quickly test the program.
 
-### General configuration
+### Which field to search
 
-filedToSearch : The name of the field where to search in the openfoodfact database. (supported: "code".)
+filedToSearch : The name of the field where to search in the OpenFoodfact database. 
+Supported fields are "categories_tags", "product_name" and "code".
 
+Be careful that using categories_tags could load several tens of thousands of data.
+
+### Searching things
 
 searchWords : Array of keywords to search. (eg: ['coca cola', 'fanta'])
 
+In the case of the field "categories_tags", it is required to use a country flag before the name (eg:'en:beverages')
 
 ### Provider configuration
 
-provider : Which dump do you want to use in order to retreive the data. (eg: csv or mongo)
+Be warned that some results may change while using one or another provider.
+
+provider : Which dump do you want to use in order to retreive the data. (eg: "api" or "mongo")
 
 #### In the case of _mongo_ : 
 
@@ -52,7 +59,7 @@ Currently, "categories_tag" field is not supported by the "api" provider.
 
 ## Running this tool
 
-Run the "Main".
+Run the "Main" class.
 You will be warned if any errors occur, especially concerning the config file.
 The generated CSV file will be located at the root of this program.
 
