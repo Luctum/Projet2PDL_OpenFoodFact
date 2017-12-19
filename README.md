@@ -5,19 +5,23 @@ A pom.xml file is defined in order to download all the dependencies with maven e
 Current dependencies:
 - OpenCSV
 - Gson
+- Jackson
+- Junit
+- okhttp3
 - mongo-java-driver
 
 ## Configuration
 
 Edit the config.json file at the root of the project.
+Multiple example config.json files are at the root in order to quickly test the program.
 
 ### General configuration
 
-filedToSearch : The name of the field where to search in the openfoodfact database. (eg: "code".)
+filedToSearch : The name of the field where to search in the openfoodfact database. (supported: "code".)
 
-searchWords : Array of keywords to search. (eg: ['coca cola', "fanta"])
 
-(filters : WIP)
+searchWords : Array of keywords to search. (eg: ['coca cola', 'fanta'])
+
 
 ### Provider configuration
 
@@ -29,30 +33,26 @@ mongoPort : The port you are using to run mongoDb. (optionnal: 27017 by default)
 collectionName : Name of your mongoDb collection (optionnal: "products" by default)
 dbName : Name of your database.
 
-#### In the case of _csv_ :
+#### In the case of _api_ :
 
-csvPath : The complete path where you store your csv dump. (optionnal : default is the root of this program products.csv)
+Be aware that this provider is under development and is subject to change, both on our side and on OpenFoodFact's side.
+Currently, "categories_tag" field is not supported by the "api" provider.
 
 #### Complete example : 
 ```
 {
-  "fieldToSearch" : "product_name",
+  "fieldToSearch" : "code",
   "searchWords": [
-    "Choco Bites",
-    "Chocapic",
-    "nutella",
-    "La vache qui rit"
+    "3029330003533"
   ],
-  "filters": {
-  },
   "provider": "mongo",
-  "mongoPort": 27017
+  "dbName": "pdl"
 }
 ```
 
 ## Running this tool
 
-Run the jar, or the main class.
-You will be warned if any errors occur.
+Run the "Main".
+You will be warned if any errors occur, especially concerning the config file.
 The generated CSV file will be located at the root of this program.
 
