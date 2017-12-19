@@ -3,10 +3,8 @@
   "searchWords": [
     "3029330003533"
   ],
-  "filters": {
-  },
   "provider": "mongo",
   "mongoPort": 27017,
   "collectionName": "products",
-  "dbName": "openfoodfact"
+  "dbName": "pdl"
 }

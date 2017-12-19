@@ -1,0 +1,8 @@
+{
+  "fieldToSearch" : "categories_tags",
+  "searchWords": [
+    "en:beverages"
+  ],
+  "provider": "mongo",
+  "dbName": "pdl"
+}

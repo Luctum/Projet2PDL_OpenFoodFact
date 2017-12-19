@@ -23,7 +23,7 @@ public class MongoDbFetcherTest {
      */
     @Before
     public void setUp() throws Exception {
-        this.mongoDbFetcher = new MongoDbFetcher(ConfigReader.readConfig("config.json"));
+        this.mongoDbFetcher = new MongoDbFetcher(ConfigReader.readConfig("config2.json"));
     }
 
     /**

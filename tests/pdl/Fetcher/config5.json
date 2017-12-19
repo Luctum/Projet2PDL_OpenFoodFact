@@ -1,7 +1,0 @@
-{
-  "fieldToSearch" : "products",
-  "provider": "api",
-  "mongoPort": 27017,
-  "collectionName": "products",
-  "dbName": "openfoodfact"
-}

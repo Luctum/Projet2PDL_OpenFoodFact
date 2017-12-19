@@ -1,10 +1,11 @@
 {
-  "fieldToSearch" : "categories_tag",
+  "fieldToSearch" : "code",
   "searchWords": [
-    "en:beverages"
+    "737628064502",
+    "3029330003533"
   ],
-  "provider": "api",
+  "provider": "mongo",
   "mongoPort": 27017,
   "collectionName": "products",
-  "dbName": "openfoodfact"
+  "dbName": "pdl"
 }
