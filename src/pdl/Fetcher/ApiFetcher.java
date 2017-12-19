@@ -23,7 +23,6 @@ public class ApiFetcher implements IFetcher {
     /**
      *
      */
-    private boolean isCategory;
     private boolean isCode;
     private boolean isProduct;
     /**
@@ -66,7 +65,6 @@ public class ApiFetcher implements IFetcher {
      * Instantiates {@param searchUrlByProductName}, {@param searchUrlByProductByCode}, {@param searchUrlByCategory}
      */
     public ApiFetcher(Config c) throws Exception {
-        this.isCategory = false;
         this.isCode = false;
         this.isProduct = false;
         this.file = c;
@@ -174,7 +172,6 @@ public class ApiFetcher implements IFetcher {
                 this.isCode = true;
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByProductByCode"), this.getClass().getMethod("setSearchByCode", String.class));
             case "categories_tags":
-                this.isCategory = true;
                 return new PairImpl<>(this.getClass().getMethod("getSearchUrlByCategory"), this.getClass().getMethod("setSearchByCategory", String.class));
             default:
                 return null;
