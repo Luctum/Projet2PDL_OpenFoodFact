@@ -87,7 +87,6 @@ public class ApiFetcher implements IFetcher {
         return response.body();
     }
 
-
     /**
      * Container of the JSON data we received from the API
      * @return {@link List} object containing {@link String} objects
@@ -130,7 +129,6 @@ public class ApiFetcher implements IFetcher {
         }
         return this.products;
     }
-
     /**
      * JSON pretty printer
      * @throws Exception
