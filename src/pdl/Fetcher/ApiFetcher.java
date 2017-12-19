@@ -170,7 +170,6 @@ public class ApiFetcher implements IFetcher {
             StringBuilder str = new StringBuilder(it.next());
             str.deleteCharAt(0);
             str.deleteCharAt(str.length()-1);
-            System.out.println("yolo : " + str);
             try {
                 json = json = new JSONObject(str.toString());
             } catch (JSONException e) {

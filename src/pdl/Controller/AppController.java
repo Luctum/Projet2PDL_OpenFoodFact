@@ -18,7 +18,7 @@ public class AppController {
         Config c = ConfigReader.readConfig();
         System.out.println("----- CONFIG ----");
         System.out.println(c.toString());
-       /* switch(c.getProvider()){
+        switch(c.getProvider()){
             case "api":
                 setFetcherAndRun(c, new ApiFetcher(c));
                 break;
@@ -28,10 +28,7 @@ public class AppController {
             default:
                 System.out.println("FAILED");
                 break;
-        }*/
-
-        ApiFetcher f = new ApiFetcher(c);
-        f.formatJsonString(f.getProducts());
+        }
     }
 
     public static void setFetcherAndRun(Config c, IFetcher fetcher){
