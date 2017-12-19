@@ -3,7 +3,10 @@ package pdl.Fetcher;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
+import pdl.Model.Product;
 import pdl.Utils.ConfigReader;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -82,5 +85,41 @@ public class ApiFetcherTest {
         this.apiFetcher.setSearchByProductName("737628064502");
         ResponseBody r = this.apiFetcher.run(this.apiFetcher.getSearchUrlByProductName());
         assertEquals(1, this.apiFetcher.getStatus(r));
+    }
+
+    @Test
+    public void getProductName()  throws Exception
+    {
+        apiFetcher.prettify();
+        List<Product> products = apiFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "Crousti Moelleux Complet", product.getName());
+    }
+
+    @Test
+    public void getProductNutritionGrade()  throws Exception
+    {
+        apiFetcher.prettify();
+        List<Product> products = apiFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "a", product.getNutritionGrade());
+    }
+
+    @Test
+    public void getProductNutriment()  throws Exception
+    {
+        apiFetcher.prettify();
+        List<Product> products = apiFetcher.getListProduct();
+        Product product = products.iterator().next();
+        assertEquals( "7", product.getNutriment("sugars_100g"));
+        assertEquals( "5.5", product.getNutriment("fiber_100g"));
+        assertEquals( "0.452755905511811", product.getNutriment("sodium_100g"));
+        assertEquals( "43", product.getNutriment("carbohydrates_100g"));
+        assertEquals( "4", product.getNutriment("fat_100g"));
+        assertEquals( "1.15", product.getNutriment("salt_100g"));
+        assertEquals( "9", product.getNutriment("proteins_100g"));
+        assertEquals( "", product.getNutriment("saturated_fat_100g"));
+        assertEquals( "1076", product.getNutriment("energy_100g"));
+
     }
 }
