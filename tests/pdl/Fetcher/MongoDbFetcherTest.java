@@ -43,4 +43,10 @@ public class MongoDbFetcherTest {
     {
         assertFalse("The collection est null", mongoDbFetcher.getDbCollection() == null);
     }
+
+    @Test
+    public void getDbCollection()  throws Exception
+    {
+        assertFalse("The collection est null", mongoDbFetcher.getDbCollection() == null);
+    }
 }
