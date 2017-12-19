@@ -168,7 +168,7 @@ public class ApiFetcher implements IFetcher {
             Product product = new Product();
             JSONObject json = null;
             StringBuilder str = new StringBuilder(it.next());
-            if(!str.toString().equals("[]") || !str.toString().equals("")){
+            if(!str.toString().equals("[]")){
                 str.deleteCharAt(0);
                 str.deleteCharAt(str.length()-1);
                 try {
