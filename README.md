@@ -10,6 +10,26 @@ Current dependencies:
 - okhttp3
 - mongo-java-driver
 
+## Project Structure
+
+    - src
+        - main
+            - java
+                - pdl_group9 
+                    -Controller
+                    -Fetcher
+                    -Model
+                    -Utils
+                    Main.class
+        - tests
+            - java  
+                -pdl
+                    - Fetcher
+    
+  
+
+
+
 ## Configuration
 
 Edit the config.json file at the root of the project.
