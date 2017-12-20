@@ -1,6 +1,8 @@
 # Projet3PDL_OpenFoodFact
 Get data from openfoodfact and create comparision matrix in order to export them in CSV.
 
+Project presentation (FR): https://www.youtube.com/watch?v=VHJBzM0o660&feature=youtu.be 
+
 A pom.xml file is defined in order to download all the dependencies with maven easily.
 Current dependencies:
 - OpenCSV
